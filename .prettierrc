@@ -1,0 +1,16 @@
+{
+	"endOfLine": "lf",
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"printWidth": 100,
+	"quoteProps": "consistent",
+	"overrides": [
+		{
+			"files": "*.ejs",
+			"options": {
+				"parser": "html"
+			}
+		}
+	]
+}

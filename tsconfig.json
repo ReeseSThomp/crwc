@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"target": "es2020",
+		"module": "es2020",
+		"outDir": "./lib",
+		"declaration": true,
+		// "declarationMap": true,
+		"sourceMap": true,
+		"inlineSources": true,
+		"experimentalDecorators": true,
+		"strict": true,
+		"noImplicitOverride": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"plugins": [
+			{
+				"name": "ts-lit-plugin",
+				"strict": true,
+				"rules": {
+					"no-unknown-event": "warning"
+				}
+			}
+		],
+	}
+}

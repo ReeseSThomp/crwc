@@ -1,0 +1,162 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": [
+					"./src"
+				],
+				"extensions": [
+					".js",
+					".ts"
+				],
+				"moduleDirectory": [
+					"./node_modules",
+					"./src"
+				]
+			}
+		}
+	},
+	"plugins": [
+		"@typescript-eslint",
+		"prettier",
+		"import",
+		"prefer-import",
+		"promise"
+	],
+	"extends": [
+		"airbnb-base",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:lit/recommended",
+		"plugin:prettier/recommended"
+	],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2021,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		//	global rules - keep exceptions for js vs ts in appropriate section below
+		"prettier/prettier": "error",
+		"curly": [
+			2,
+			"all"
+		],
+		"no-shadow": "off", // Hard to get this one working correctly ATM it seems
+		"no-void": "off", // We use void to indicate ignored promises
+		"class-methods-use-this": "off",
+		"no-param-reassign": [
+			2,
+			{
+				"props": false
+			}
+		],
+		"no-unused-expressions": "warn", // Allow short circuit shorthand: e.g. vfoo == true && func()
+		"no-restricted-syntax": [
+			"error",
+			"WithStatement"
+		], // Allow "BinaryExpression[operator='in']" and "FunctionExpression"
+		"max-lines": [
+			"warn",
+			600 // some components are long and I'm lazy
+		],
+		"no-console": [
+			"warn",
+			{
+				"allow": [
+					"error",
+					"warn",
+					"info"
+				]
+			}
+		],
+		"no-underscore-dangle": "warn", // lets use ECMAScript Private Fields?
+		"no-await-in-loop": "warn", // Possibly indicative of a problem, but also too useful to ban
+		"require-await": "warn",
+		"promise/param-names": "error",
+		"promise/prefer-await-to-then": "error",
+		"promise/valid-params": "warn",
+		"promise/no-return-in-finally": "warn",
+		"promise/no-new-statics": "error",
+		"promise/no-nesting": "warn",
+		"promise/always-return": "error",
+		"promise/catch-or-return": "warn",
+		"promise/no-return-wrap": "error",
+		"@typescript-eslint/no-non-null-assertion": "warn", // Relax linter a bit
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_"
+			}
+		], //	'declared but value never read' breaks the compiler anyway - ts allows prefixing intentionally unusued identifiers with '_'
+		"@typescript-eslint/unbound-method": "off", // This rule doesnt understand that lit element @ notation binds `this` to function
+		"@typescript-eslint/no-empty-function": "off", // Empty functions are needed as overrides for lit-html base classes
+		"lit/no-template-arrow": "warn",
+		"lit/no-template-bind": "warn",
+		"lit/no-useless-template-literals": "warn",
+		"lit/binding-positions": "error",
+		"lit/attribute-value-entities": "error",
+		"lit/no-duplicate-template-bindings": "error",
+		"lit/no-invalid-html": "error",
+		"lit/no-property-change-update": "error",
+		"lit/no-value-attribute": "error",
+		"import/extensions": "off", // needed for lit imports
+		"import/no-cycle": "off", // Disabled for performance
+		// WebComponents may only be imported by requesting the entire file e.g. `import './cats.ts'`
+		// but we may also wish to import other exports from the file, e.g. import { MaineCoon } from './cats.ts'
+		// and this rule sees that situation as being an error and removes an import.
+		"import/no-duplicates": "off",
+		"sort-imports": [
+			"error",
+			{
+				"ignoreCase": false,
+				"ignoreDeclarationSort": true,
+				"ignoreMemberSort": false
+				// "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+			}
+		],
+		"import/no-extraneous-dependencies": "off",
+		"prefer-import/prefer-import-over-require": [
+			1
+		],
+		"no-useless-constructor": "error",
+		"no-plusplus": [
+			"error",
+			{
+				"allowForLoopAfterthoughts": true
+			}
+		]
+	},
+	"overrides": [
+		{
+			"files": [
+				"*.js"
+			],
+			"rules": {
+				"import/no-unresolved": "warn",
+				"import/named": "warn" 
+			}
+		},
+		{
+			"files": [
+				"*.ts"
+			],
+			"rules": {
+				"import/no-unresolved": "off", // Handled by TypeScript
+				"import/named": "off", // Handled by TypeScript
+				"no-undef": "off" // Handled by TypeScript
+			}
+		}
+	]
+}

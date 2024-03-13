@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Component Playground</title>
+		<script src="./lib/components/index.js"></script>
+	</head>
+	<body>
+		<p>cra-choice-slider</p>
+		<div style="width: 270px; height: 80px">
+			<cra-choice-slider
+				name="alertPriorityName"
+				options='[{"sliderValue":"critical","hoverText":"Critical reports include road closures, serious accidents, and other incidents that may result in a significant impact to traffic."},{"sliderValue":"urgent","hoverText":"Urgent reports are those that may have a moderate traffic impact, such as obstructions and lane closures."},{"sliderValue":"routine","hoverText":"Routine reports include construction work and minor incidents that may have little to no impact on traffic (not recomended)."},{"sliderValue":"all","hoverText":"The All reports category is intended for agency users only. If you select this option you may receive too many alerts (not recommended)."}]'
+			></cra-choice-slider>
+		</div>
+		<hr />
+		<p>cra-checkbox-group</p>
+		<cra-checkbox-group
+			name="cool checkboxes"
+			valuetolabel='{"a":"x","b":"y","c":"z"}'
+			selectedvalue='["a"]'
+		></cra-checkbox-group>
+		<hr />
+		<p>cra-checkbox</p>
+		<div style="width: 50px; height: 50px">
+			<cra-checkbox value="cool" checked="checked"></cra-checkbox>
+		</div>
+		<p>cra-code-input</p>
+		<div style="width: 400px; height: 50px">
+			<cra-code-input name="verificationCode" label="Verification Code"></cra-code-input>
+		</div>
+		<hr />
+		<p>cra-native-select</p>
+		<native-select name="subject" value="yoyo"></native-select>
+		<hr />
+		<p>cra-success-check</p>
+		<div style="width: 50px; height: 50px"><cra-success-check></cra-success-check></div>
+		<hr />
+		<p>cra-tel-input</p>
+		<div style="width: 400px; height: 100px">
+			<cra-tel-input name="phoneNumber" label="Phone number" value="(281) 330-8004"></cra-tel-input>
+		</div>
+		<hr />
+		<p>cra-text-area</p>
+		<div style="width: 400px; height: 100px">
+			<cra-text-area name="body" placeholder="type in here yo"></cra-text-area>
+		</div>
+		<hr />
+		<p>cra-text-input</p>
+		<div style="width: 400px; height: 50px">
+			<cra-text-input label="cool stuff bro"></cra-text-input>
+		</div>
+		<hr />
+		<p>cra-toggle-switch</p>
+		<cra-toggle-switch name="statewideEmergencyAlertsEnabled" checked="checked"></cra-toggle-switch>
+		<hr />
+	</body>
+</html>
